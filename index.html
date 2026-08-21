@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nothing Sets — A Field Guide to the Midnight Sun</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#E7EDEF;      /* 3am light */
+  --paper-2:#F4F7F8;
+  --ink:#16262F;        /* deep slate */
+  --slate:#5D7482;
+  --rule:#C3D0D6;
+  --sun:#D2900F;        /* sodium, low-angle */
+  --sun-d:#9A6708;
+  --deep:#2C5567;       /* fjord */
+  --ice:#8FB0BF;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Spectral",Georgia,serif;font-weight:400;font-size:17px;line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:660px;margin:0 auto;padding:0 22px 90px}
+h1,h2,h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;letter-spacing:-0.01em}
+a{color:var(--deep);text-decoration:none;border-bottom:1px solid var(--ice)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--sun);outline-offset:3px}
+
+/* ---- masthead ---- */
+.mast{padding:64px 0 30px;border-bottom:1px solid var(--rule)}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;
+  letter-spacing:0.18em;text-transform:uppercase;color:var(--sun-d);margin:0 0 20px}
+h1{font-size:clamp(46px,13vw,78px);line-height:0.92;margin:0 0 18px}
+h1 em{font-style:italic;color:var(--deep)}
+.deck{font-size:19px;line-height:1.5;color:var(--slate);margin:0;max-width:30em}
+
+/* ---- the horizon device (signature) ---- */
+.horizon{margin:34px 0 0;height:132px;position:relative;overflow:hidden;
+  border:1px solid var(--rule);border-radius:3px;
+  background:linear-gradient(180deg,#DCE6EA 0%,#E9EFF1 46%,#F3E4C6 58%,#E8D3A8 70%,#CFD9DE 71%,#BCCAD1 100%)}
+.horizon .disc{position:absolute;left:50%;top:56%;width:36px;height:36px;margin-left:-18px;
+  border-radius:50%;background:radial-gradient(circle at 50% 45%,#FFE9AE 0%,#F2C24E 48%,#D2900F 100%);
+  box-shadow:0 0 34px 12px rgba(210,144,15,.34)}
+.horizon .line{position:absolute;left:0;right:0;top:71%;height:1px;background:var(--slate);opacity:.5}
+.horizon .tag{position:absolute;left:12px;bottom:9px;font-family:"IBM Plex Mono",monospace;
+  font-size:10.5px;font-weight:600;letter-spacing:.1em;color:var(--slate);text-transform:uppercase}
+.horizon .tag.r{left:auto;right:12px}
+
+/* ---- structure ---- */
+section{padding:52px 0 0}
+h2{font-size:clamp(30px,7.5vw,40px);line-height:1.06;margin:0 0 6px}
+.sec-tag{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--slate);margin:0 0 12px;display:block}
+h3{font-size:23px;line-height:1.2;margin:36px 0 6px}
+h4{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--sun-d);margin:30px 0 8px}
+p{margin:0 0 17px}
+hr{border:0;border-top:1px solid var(--rule);margin:46px 0 0}
+
+/* ---- pull ---- */
+.pull{border-left:3px solid var(--sun);padding:4px 0 4px 20px;margin:28px 0;
+  font-family:"Instrument Serif",Georgia,serif;font-size:24px;line-height:1.26;color:var(--deep)}
+
+/* ---- figures ---- */
+figure{margin:32px -22px;padding:26px 18px 20px;background:var(--paper-2);
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-family:"IBM Plex Mono",monospace;font-size:11.5px;line-height:1.55;
+  color:var(--slate);margin:0 0 16px;padding:0 6px}
+figcaption b{color:var(--ink);font-weight:600}
+
+/* ---- table ---- */
+.tablewrap{margin:26px -22px;padding:0 22px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;font-family:"IBM Plex Mono",monospace;font-size:12px;min-width:600px}
+th{text-align:left;font-weight:600;font-size:10px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--slate);padding:0 14px 9px 0;border-bottom:1.5px solid var(--ink);white-space:nowrap;vertical-align:bottom}
+td{padding:9px 14px 9px 0;border-bottom:1px solid var(--rule);white-space:nowrap}
+td.nm{font-weight:500;font-family:"Spectral",serif;font-size:14px;white-space:normal;padding-right:18px}
+td.nm span{display:block;font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--slate);
+  letter-spacing:.06em;text-transform:uppercase}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+.scrollhint{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--slate);
+  letter-spacing:.08em;text-transform:uppercase;margin:0 0 10px}
+
+/* ---- place entries ---- */
+.place{border-top:1px solid var(--rule);padding:22px 0 4px}
+.place h3{margin:0 0 2px}
+.coord{font-family:"IBM Plex Mono",monospace;font-size:11.5px;font-weight:500;color:var(--sun-d);
+  letter-spacing:.06em;margin:0 0 10px}
+.coord span{color:var(--slate)}
+
+/* ---- route cards ---- */
+.route{background:var(--paper-2);border:1px solid var(--rule);border-radius:3px;
+  padding:22px 20px 8px;margin:22px 0}
+.route .rt{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--sun-d);margin:0 0 6px}
+.route h3{margin:0 0 4px;font-size:26px}
+.route .meta{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--slate);margin:0 0 16px}
+ol.legs{list-style:none;counter-reset:leg;margin:0 0 16px;padding:0}
+ol.legs li{counter-increment:leg;position:relative;padding:0 0 14px 34px;font-size:15.5px;line-height:1.5}
+ol.legs li::before{content:counter(leg,decimal-leading-zero);position:absolute;left:0;top:2px;
+  font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;color:var(--sun);letter-spacing:.05em}
+ol.legs li b{font-weight:600}
+ol.legs li::after{content:"";position:absolute;left:9px;top:22px;bottom:2px;width:1px;background:var(--rule)}
+ol.legs li:last-child::after{display:none}
+
+/* ---- notes / warnings ---- */
+.note{border:1px solid var(--sun);border-left-width:3px;border-radius:3px;padding:16px 18px;margin:24px 0;
+  background:rgba(210,144,15,.06);font-size:15.5px;line-height:1.55}
+.note b{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--sun-d);display:block;margin:0 0 6px}
+.note p{margin:0 0 10px}.note p:last-child{margin:0}
+
+ul.plain{padding-left:20px;margin:0 0 18px}
+ul.plain li{margin:0 0 9px;padding-left:2px}
+
+/* ---- colophon ---- */
+.colophon{margin-top:56px;padding:26px 0 0;border-top:1px solid var(--rule);
+  font-family:"IBM Plex Mono",monospace;font-size:12px;line-height:1.65;color:var(--slate)}
+.colophon b{color:var(--ink);font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  font-size:10.5px;display:block;margin:0 0 8px}
+
+@media (max-width:520px){
+  body{font-size:16.5px}
+  .mast{padding-top:44px}
+  figure{padding:20px 12px 16px}
+  .route{padding:18px 16px 6px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="mast">
+  <p class="eyebrow">Field Guide · Northern Europe &amp; the Antarctic</p>
+  <h1>Nothing<br><em>Sets</em></h1>
+  <p class="deck">Where to stand, and exactly when, to watch the sun refuse to go down — with the two facts most midnight sun guides get wrong.</p>
+  <div class="horizon" aria-hidden="true">
+    <div class="disc"></div><div class="line"></div>
+    <span class="tag">00:00 local</span><span class="tag r">70°22′N</span>
+  </div>
+</header>
+
+<section>
+  <span class="sec-tag">The premise, corrected</span>
+  <h2>Two things to know first</h2>
+
+  <p>Almost every midnight sun guide tells you to go north of the Arctic Circle in summer. That is true and nearly useless. Two corrections change how you'd actually plan the trip.</p>
+
+  <h4>One — midnight is not the middle of the night</h4>
+  <p>Norway, Sweden and Finland all run clocks that sit well off their true solar time. Solar midnight — the moment the sun reaches its lowest point and starts climbing again — arrives at 00:41 in Kiruna, 01:14 in Utsjoki, 01:39 in Kilpisjärvi. Iceland is on UTC year-round but sits 18 to 22 degrees west, so Grímsey's solar midnight is 01:14, not twelve.</p>
+  <p>During the window the sun is above the horizon at both hours, so a photograph at the stroke of twelve always works. But the thing you actually came for — the disc grazing the horizon, flattening, sliding sideways instead of down — happens at solar midnight. In most of Lapland that is closer to two in the morning.</p>
+  <p>There is exactly one meaningful exception. <b>Vardø, on Norway's Barents Sea coast at 31°E, has a solar midnight of 23:57.</b> It is the only inhabited place in the Nordics where the sun's lowest point and the clock's midnight land within three minutes of each other. If the literal midnight matters to you, Vardø is the answer, and it is not a place any guidebook sends you.</p>
+
+  <h4>Two — the Southern Hemisphere has no midnight sun destination</h4>
+  <p>There is no southern Tromsø. The Antarctic Circle sits at 66°34′S, and no permanently inhabited settlement on Earth lies south of it. Ushuaia, the usual candidate, is at 54°48′S: on the December solstice its sun sinks to about 11.5° below the horizon at solar midnight — nautical twilight, genuinely beautiful, but the sun has set. Same for Punta Arenas, the Falklands, South Georgia and New Zealand's subantarctic islands.</p>
+  <p>The only way to stand in sunlight at midnight south of the equator is to be on a ship that has crossed the Antarctic Circle, in December. That constraint is sharper than it sounds, and it gets its own section below.</p>
+</section>
+
+<hr>
+
+<section>
+  <span class="sec-tag">The geometry</span>
+  <h2>Latitude buys nights</h2>
+  <p>The Arctic Circle is not a switch. At the line itself you get about two and a half weeks. Every degree further north widens the window fast, and the growth is not linear — it accelerates.</p>
+
+  <figure><figcaption><b>Fig. 1</b> — Midnight sun windows by latitude, 2027. Number at each bar's end is total nights.</figcaption><svg viewBox="0 0 720 626" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Chart of midnight sun date windows by latitude">
+<style>.lb{font:500 12px "IBM Plex Mono",monospace;fill:var(--slate)}.ln{font:500 12.5px "IBM Plex Mono",monospace;fill:var(--ink)}.ax{font:500 11px "IBM Plex Mono",monospace;fill:var(--slate)}.sl{font:600 11px "IBM Plex Mono",monospace;fill:var(--sun-d)}</style>
+<line x1="288.3" y1="46" x2="288.3" y2="580" stroke="var(--rule)" stroke-width="1"/><text class="ax" x="293.3" y="40">JUN</text>
+<line x1="428.6" y1="46" x2="428.6" y2="580" stroke="var(--rule)" stroke-width="1"/><text class="ax" x="433.6" y="40">JUL</text>
+<line x1="573.7" y1="46" x2="573.7" y2="580" stroke="var(--rule)" stroke-width="1"/><text class="ax" x="578.7" y="40">AUG</text>
+<line x1="381.9" y1="28" x2="381.9" y2="580" stroke="var(--sun)" stroke-width="1.5" stroke-dasharray="3 3"/>
+<text class="sl" x="379.9" y="24" text-anchor="end">SOLSTICE</text>
+<text class="ln" x="8" y="77.0">Reykjavík</text>
+<text class="lb" x="166" y="77.0" text-anchor="end">64.1°</text>
+<line x1="325.7" y1="73.0" x2="442.7" y2="73.0" stroke="var(--slate)" stroke-width="1" stroke-dasharray="2 4"/>
+<text class="lb" x="456.7" y="77.0">none</text>
+<text class="ln" x="8" y="103.0">Akureyri</text>
+<text class="lb" x="166" y="103.0" text-anchor="end">65.7°</text>
+<line x1="325.7" y1="99.0" x2="442.7" y2="99.0" stroke="var(--slate)" stroke-width="1" stroke-dasharray="2 4"/>
+<text class="lb" x="456.7" y="103.0">none</text>
+<text class="ln" x="8" y="129.0">Rovaniemi</text>
+<text class="lb" x="166" y="129.0" text-anchor="end">66.5°</text>
+<rect x="344.4" y="118.0" width="70.2" height="14" rx="2" fill="var(--sun)" opacity="0.88"/>
+<text class="lb" x="422.6" y="129.0" fill="var(--slate)">16</text>
+<text class="ln" x="8" y="155.0">Grímsey</text>
+<text class="lb" x="166" y="155.0" text-anchor="end">66.5°</text>
+<rect x="349.1" y="144.0" width="74.9" height="14" rx="2" fill="var(--sun)" opacity="0.88"/>
+<text class="lb" x="432.0" y="155.0" fill="var(--slate)">17</text>
+<text class="ln" x="8" y="181.0">Jokkmokk</text>
+<text class="lb" x="166" y="181.0" text-anchor="end">66.6°</text>
+<rect x="339.8" y="170.0" width="84.2" height="14" rx="2" fill="var(--sun)" opacity="0.88"/>
+<text class="lb" x="432.0" y="181.0" fill="var(--slate)">19</text>
+<text class="ln" x="8" y="207.0">Bodø</text>
+<text class="lb" x="166" y="207.0" text-anchor="end">67.3°</text>
+<rect x="302.3" y="196.0" width="154.4" height="14" rx="2" fill="var(--sun)" opacity="0.88"/>
+<text class="lb" x="464.7" y="207.0" fill="var(--slate)">34</text>
+<text class="ln" x="8" y="233.0">Kiruna</text>
+<text class="lb" x="166" y="233.0" text-anchor="end">67.9°</text>
+<rect x="283.6" y="222.0" width="196.5" height="14" rx="2" fill="var(--sun)" opacity="0.88"/>
+<text class="lb" x="488.1" y="233.0" fill="var(--slate)">43</text>
+<text class="ln" x="8" y="259.0">Svolvær</text>
+<text class="lb" x="166" y="259.0" text-anchor="end">68.2°</text>
+<rect x="269.6" y="248.0" width="219.9" height="14" rx="2" fill="var(--sun)" opacity="0.88"/>
+<text class="lb" x="497.5" y="259.0" fill="var(--slate)">48</text>
+<text class="ln" x="8" y="285.0">Abisko</text>
+<text class="lb" x="166" y="285.0" text-anchor="end">68.3°</text>
+<rect x="269.6" y="274.0" width="224.6" height="14" rx="2" fill="var(--sun)" opacity="0.88"/>
+<text class="lb" x="502.1" y="285.0" fill="var(--slate)">49</text>
+<text class="ln" x="8" y="311.0">Narvik</text>
+<text class="lb" x="166" y="311.0" text-anchor="end">68.4°</text>
+<rect x="264.9" y="300.0" width="229.2" height="14" rx="2" fill="var(--sun)" opacity="0.88"/>
+<text class="lb" x="502.1" y="311.0" fill="var(--slate)">50</text>
+<text class="ln" x="8" y="337.0">Inari</text>
+<text class="lb" x="166" y="337.0" text-anchor="end">68.9°</text>
+<rect x="250.9" y="326.0" width="257.3" height="14" rx="2" fill="var(--sun)" opacity="0.88"/>
+<text class="lb" x="516.2" y="337.0" fill="var(--slate)">56</text>
+<text class="ln" x="8" y="363.0">Kilpisjärvi</text>
+<text class="lb" x="166" y="363.0" text-anchor="end">69.0°</text>
+<rect x="250.9" y="352.0" width="262.0" height="14" rx="2" fill="var(--sun)" opacity="0.88"/>
+<text class="lb" x="520.9" y="363.0" fill="var(--slate)">57</text>
+<text class="ln" x="8" y="389.0">Ilulissat</text>
+<text class="lb" x="166" y="389.0" text-anchor="end">69.2°</text>
+<rect x="246.2" y="378.0" width="276.0" height="14" rx="2" fill="var(--sun)" opacity="0.88"/>
+<text class="lb" x="530.2" y="389.0" fill="var(--slate)">60</text>
+<text class="ln" x="8" y="415.0">Tromsø</text>
+<text class="lb" x="166" y="415.0" text-anchor="end">69.6°</text>
+<rect x="236.8" y="404.0" width="290.1" height="14" rx="2" fill="var(--sun)" opacity="0.88"/>
+<text class="lb" x="534.9" y="415.0" fill="var(--slate)">63</text>
+<text class="ln" x="8" y="441.0">Utsjoki</text>
+<text class="lb" x="166" y="441.0" text-anchor="end">69.9°</text>
+<rect x="227.5" y="430.0" width="304.1" height="14" rx="2" fill="var(--sun)" opacity="0.88"/>
+<text class="lb" x="539.6" y="441.0" fill="var(--slate)">66</text>
+<text class="ln" x="8" y="467.0">Alta</text>
+<text class="lb" x="166" y="467.0" text-anchor="end">70.0°</text>
+<rect x="227.5" y="456.0" width="304.1" height="14" rx="2" fill="var(--sun)" opacity="0.88"/>
+<text class="lb" x="539.6" y="467.0" fill="var(--slate)">66</text>
+<text class="ln" x="8" y="493.0">Vardø</text>
+<text class="lb" x="166" y="493.0" text-anchor="end">70.4°</text>
+<rect x="218.1" y="482.0" width="322.8" height="14" rx="2" fill="var(--sun)" opacity="0.88"/>
+<text class="lb" x="548.9" y="493.0" fill="var(--slate)">70</text>
+<text class="ln" x="8" y="519.0">Hammerfest</text>
+<text class="lb" x="166" y="519.0" text-anchor="end">70.7°</text>
+<rect x="213.4" y="508.0" width="336.9" height="14" rx="2" fill="var(--sun)" opacity="0.88"/>
+<text class="lb" x="558.3" y="519.0" fill="var(--slate)">73</text>
+<text class="ln" x="8" y="545.0">Nordkapp</text>
+<text class="lb" x="166" y="545.0" text-anchor="end">71.2°</text>
+<rect x="204.1" y="534.0" width="355.6" height="14" rx="2" fill="var(--sun)" opacity="0.88"/>
+<text class="lb" x="567.6" y="545.0" fill="var(--slate)">77</text>
+<text class="ln" x="8" y="571.0">Longyearbyen</text>
+<text class="lb" x="166" y="571.0" text-anchor="end">78.2°</text>
+<rect x="91.8" y="560.0" width="580.1" height="14" rx="2" fill="var(--sun)" opacity="0.88"/>
+<text class="lb" x="679.9" y="571.0" fill="var(--slate)">125</text>
+<text class="ax" x="8" y="610">Nights the sun never sets, at sea level. Bars end where the sun first dips below the horizon.</text>
+</svg></figure>
+
+  <p>Two things fall out of that chart. First, <b>Rovaniemi sits just <i>south</i> of the Circle</b> at 66°30′ and still gets sixteen nights, because atmospheric refraction lifts the sun's image by roughly half a degree and you only need the upper edge of the disc to clear the horizon. The famous painted line at Santa Claus Village is a real boundary for a theoretical sun, not the one in the sky.</p>
+  <p>Second, the difference between a trip that works and one that fails is mostly latitude, not luck. At Grímsey or Rovaniemi you have a seventeen-day target and one cloudy week ruins it. At Nordkapp you have eleven weeks. At Longyearbyen you have four months.</p>
+
+  <div class="pull">If you can only take one trip and cannot move the dates, buy latitude. It is the only variable that reliably compounds.</div>
+</section>
+
+<hr>
+
+<section>
+  <span class="sec-tag">The almanac</span>
+  <h2>Every candidate, measured</h2>
+  <p>Computed for 2027 at sea level. <b>Solar midnight</b> is the local clock time of the sun's lowest point on the solstice; the last two columns give the sun's altitude at that moment and at the stroke of twelve. Where the second number is larger, the sun is still climbing at midnight.</p>
+  <div class="tablewrap">
+    <p class="scrollhint">← scroll table →</p>
+    <table>
+      <thead><tr><th>Place</th><th>Lat</th><th>Sun never sets</th><th>Nights</th><th>Solar mid.</th><th>Alt @ sol.mid</th><th>Alt @ 00:00</th></tr></thead>
+      <tbody>
+      <tr><td class="nm">Reykjavík<span>Iceland</span></td><td>64.15°N</td><td>—</td><td class="num">—</td><td class="num">01:29</td><td class="num">-2.1°</td><td class="num">-0.4°</td></tr>
+<tr><td class="nm">Akureyri<span>Iceland</span></td><td>65.68°N</td><td>—</td><td class="num">—</td><td class="num">01:14</td><td class="num">-0.6°</td><td class="num">+0.5°</td></tr>
+<tr><td class="nm">Rovaniemi<span>Finland</span></td><td>66.50°N</td><td>06/13 → 06/28</td><td class="num">16</td><td class="num">01:19</td><td class="num">+0.2°</td><td class="num">+1.4°</td></tr>
+<tr><td class="nm">Grímsey<span>Iceland</span></td><td>66.55°N</td><td>06/14 → 06/30</td><td class="num">17</td><td class="num">01:14</td><td class="num">+0.2°</td><td class="num">+1.3°</td></tr>
+<tr><td class="nm">Jokkmokk<span>Sweden</span></td><td>66.61°N</td><td>06/12 → 06/30</td><td class="num">19</td><td class="num">00:43</td><td class="num">+0.3°</td><td class="num">+0.7°</td></tr>
+<tr><td class="nm">Bodø<span>Norway</span></td><td>67.28°N</td><td>06/04 → 07/07</td><td class="num">34</td><td class="num">01:04</td><td class="num">+1.0°</td><td class="num">+1.8°</td></tr>
+<tr><td class="nm">Kiruna<span>Sweden</span></td><td>67.86°N</td><td>05/31 → 07/12</td><td class="num">43</td><td class="num">00:41</td><td class="num">+1.6°</td><td class="num">+1.9°</td></tr>
+<tr><td class="nm">Svolvær<span>Norway</span></td><td>68.23°N</td><td>05/28 → 07/14</td><td class="num">48</td><td class="num">01:04</td><td class="num">+1.9°</td><td class="num">+2.7°</td></tr>
+<tr><td class="nm">Abisko<span>Sweden</span></td><td>68.35°N</td><td>05/28 → 07/15</td><td class="num">49</td><td class="num">00:47</td><td class="num">+2.0°</td><td class="num">+2.4°</td></tr>
+<tr><td class="nm">Narvik<span>Norway</span></td><td>68.44°N</td><td>05/27 → 07/15</td><td class="num">50</td><td class="num">00:52</td><td class="num">+2.1°</td><td class="num">+2.6°</td></tr>
+<tr><td class="nm">Inari<span>Finland</span></td><td>68.91°N</td><td>05/24 → 07/18</td><td class="num">56</td><td class="num">01:14</td><td class="num">+2.6°</td><td class="num">+3.6°</td></tr>
+<tr><td class="nm">Kilpisjärvi<span>Finland</span></td><td>69.05°N</td><td>05/24 → 07/19</td><td class="num">57</td><td class="num">01:39</td><td class="num">+2.8°</td><td class="num">+4.5°</td></tr>
+<tr><td class="nm">Ilulissat<span>Greenland</span></td><td>69.22°N</td><td>05/23 → 07/21</td><td class="num">60</td><td class="num">02:26</td><td class="num">+2.9°</td><td class="num">+6.6°</td></tr>
+<tr><td class="nm">Tromsø<span>Norway</span></td><td>69.65°N</td><td>05/21 → 07/22</td><td class="num">63</td><td class="num">00:46</td><td class="num">+3.4°</td><td class="num">+3.7°</td></tr>
+<tr><td class="nm">Utsjoki<span>Finland</span></td><td>69.91°N</td><td>05/19 → 07/23</td><td class="num">66</td><td class="num">01:14</td><td class="num">+3.6°</td><td class="num">+4.5°</td></tr>
+<tr><td class="nm">Alta<span>Norway</span></td><td>69.97°N</td><td>05/19 → 07/23</td><td class="num">66</td><td class="num">00:29</td><td class="num">+3.7°</td><td class="num">+3.8°</td></tr>
+<tr><td class="nm">Vardø<span>Norway</span></td><td>70.37°N</td><td>05/17 → 07/25</td><td class="num">70</td><td class="num">23:57</td><td class="num">+4.1°</td><td class="num">+4.1°</td></tr>
+<tr><td class="nm">Hammerfest<span>Norway</span></td><td>70.66°N</td><td>05/16 → 07/27</td><td class="num">73</td><td class="num">00:27</td><td class="num">+4.4°</td><td class="num">+4.5°</td></tr>
+<tr><td class="nm">Nordkapp<span>Norway</span></td><td>71.17°N</td><td>05/14 → 07/29</td><td class="num">77</td><td class="num">00:19</td><td class="num">+4.9°</td><td class="num">+4.9°</td></tr>
+<tr><td class="nm">Longyearbyen<span>Svalbard</span></td><td>78.22°N</td><td>04/20 → 08/22</td><td class="num">125</td><td class="num">00:59</td><td class="num">+11.9°</td><td class="num">+12.3°</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Read the last two columns together and the planning logic appears. In Vardø they are identical — the sun is at its lowest exactly at twelve. In Ilulissat they differ by nearly four degrees, because Greenland's clocks are wildly out of step with its longitude: solar midnight there falls at 02:26.</p>
+</section>
+
+<hr>
+
+<section>
+  <span class="sec-tag">Northern Europe</span>
+  <h2>The places</h2>
+  <p>Grouped by how you'd actually reach them, not by country.</p>
+
+  <h3 style="margin-top:34px">The Norwegian coast</h3>
+  <p>The scenic spine of the whole subject, and the only corridor where a single working ferry route connects nearly every stop. Mountains rise straight out of the water, which means the sun can be blocked by terrain even when it is technically above the horizon — on the coast you want a west or north-facing outlook, or the deck of a ship.</p>
+
+  <div class="place">
+    <h3>Bodø</h3>
+    <p class="coord">67°17′N · 34 nights, 4 Jun – 7 Jul <span>· solar midnight 01:04</span></p>
+    <p>The southernmost real one, and the most easily reached — direct flights from Oslo, and the mainland end of the Lofoten ferries. Climb Keiservarden for an unobstructed northern horizon. Bodø was a 2024 European Capital of Culture and has more going on after midnight than its size suggests.</p>
+  </div>
+
+  <div class="place">
+    <h3>Svolvær and Lofoten</h3>
+    <p class="coord">68°14′N · 48 nights, 28 May – 14 Jul <span>· solar midnight 01:04</span></p>
+    <p>The most photographed midnight sun in the world, for good reason: the Lofoten Wall gives you granite spires with the sun sliding behind them. Stay in a <i>rorbu</i>, the converted fishermen's cabins on stilts. Book six to nine months out for solstice week — this is the one place on the list with genuine capacity problems.</p>
+  </div>
+
+  <div class="place">
+    <h3>Tromsø</h3>
+    <p class="coord">69°39′N · 63 nights, 21 May – 22 Jul <span>· solar midnight 00:46</span></p>
+    <p>The practical base of operations for Arctic Norway: an actual city, an international airport, a university, and bars that stay open long enough for the sun to still be up when you leave. Take the Fjellheisen cable car up Storsteinen for the standard view. Two months of window makes it the best single-destination hedge against weather.</p>
+  </div>
+
+  <div class="place">
+    <h3>Hammerfest and Nordkapp</h3>
+    <p class="coord">70°40′N and 71°10′N · 73 and 77 nights <span>· solar midnight 00:27 / 00:19</span></p>
+    <p>Nordkapp — the North Cape — is the marketed climax: a cliff plateau 307 metres above the Barents Sea with a globe sculpture and a visitor centre that charges accordingly. It is genuinely spectacular and genuinely crowded. Because the plateau is high, the horizon drops about half a degree below true level, which quietly extends the window past the sea-level figure in the table above.</p>
+    <p>Hammerfest, an hour and a half south, is the less obvious choice: a working fishing and gas town, home of the Royal and Ancient Polar Bear Society, with a UNESCO-listed Struve Geodetic Arc marker on the hill. Fewer buses.</p>
+  </div>
+
+  <div class="place">
+    <h3>Vardø</h3>
+    <p class="coord">70°22′N · 70 nights, 17 May – 25 Jul <span>· solar midnight 23:57</span></p>
+    <p>The reason this guide exists. Norway's easternmost town sits on an island in the Barents Sea, further east than Istanbul, connected to the mainland by an undersea tunnel. Its solar midnight lands three minutes before twelve — nowhere else in the Nordics comes close.</p>
+    <p>It is also a strange and serious place: a 1730s star fort, the Steilneset Memorial to 91 people executed for witchcraft in the 1600s (a Peter Zumthor and Louise Bourgeois collaboration, and one of the best pieces of architecture in the Arctic), and a globally significant seabird colony on Hornøya just offshore. The Hurtigruten ships call here, but briefly and at whatever hour the timetable dictates — to actually be standing here at midnight you need to disembark and stay.</p>
+  </div>
+
+  <h3 style="margin-top:44px">The Nordkalotten interior</h3>
+  <p>Inland Lapland across Sweden and Finland. Flatter horizons than the coast — which is an advantage, since there is no terrain to hide the sun — and statistically drier, clearer summer weather. The trade-off is mosquitoes, which in inland Lapland in July are not a nuisance but a planning constraint.</p>
+
+  <div class="place">
+    <h3>Kiruna and Abisko</h3>
+    <p class="coord">67°51′N and 68°21′N · 43 and 49 nights <span>· solar midnight 00:41 / 00:47</span></p>
+    <p>Sweden's Arctic, reached by the Ofoten Line — the mountain railway from Narvik, built to haul iron ore, and one of Europe's great scenic rail journeys. Abisko National Park has a chairlift to the Aurora Sky Station, which runs in summer for exactly this. Kiruna is mid-way through physically relocating the entire town because the mine beneath it is undermining the old centre, which is worth seeing on its own terms.</p>
+  </div>
+
+  <div class="place">
+    <h3>Inari, Utsjoki and Kilpisjärvi</h3>
+    <p class="coord">68°54′N to 69°55′N · 56–66 nights <span>· solar midnight 01:14 – 01:39</span></p>
+    <p>Finnish Lapland's north, and the heart of Sámi Finland. Inari is home to Sajos, the Sámi Parliament building, and the Siida museum — the single best cultural stop on the northern route. Utsjoki is Finland's northernmost municipality and the only one with a Sámi-speaking majority. Kilpisjärvi sits in the handle of Finland's arm against the Norwegian and Swedish borders, with the Three-Country Cairn a walk away.</p>
+    <p>Note the solar midnight times: Finland runs UTC+3 across longitudes that would suggest UTC+2 or less. This is the worst clock misalignment in the region. Plan for a 01:30 vigil.</p>
+  </div>
+
+  <div class="place">
+    <h3>Rovaniemi and Jokkmokk</h3>
+    <p class="coord">66°30′N and 66°36′N · 16 and 19 nights <span>· solar midnight 01:19 / 00:43</span></p>
+    <p>Both sit essentially on the line, with windows narrow enough that they only make sense if you're already passing through. Rovaniemi is the gateway airport for Finnish Lapland and worth a stop for the Arktikum museum. Jokkmokk is the cultural centre of Swedish Sámi life and holds the Ájtte museum.</p>
+  </div>
+
+  <h3 style="margin-top:44px">Iceland's single qualifying spot</h3>
+  <div class="place">
+    <h3>Grímsey</h3>
+    <p class="coord">66°33′N · 17 nights, 14 Jun – 30 Jun <span>· solar midnight 01:14</span></p>
+    <p>Iceland's mainland does not get the midnight sun. Reykjavík at 64°N comes about two degrees short; Akureyri misses by half a degree. The only Icelandic ground north of the Arctic Circle is Grímsey, a five-square-kilometre basalt island forty kilometres off the north coast, with about sixty residents, one of the country's largest puffin colonies, and a chess tradition endowed by a nineteenth-century American benefactor. A concrete sphere, <i>Orbis et Globus</i>, marks the Circle and is physically moved each year as the line drifts north.</p>
+    <div class="note">
+      <b>The ferry trap</b>
+      <p>The Sæfari ferry from Dalvík is a three-hour crossing that arrives around noon and departs again by 16:00 or 17:00, back on the mainland by evening. <b>The standard day trip cannot show you the midnight sun.</b> You have to overnight on the island — guesthouses or the campsite — or fly in with Norlandair from Akureyri and stay. Book the ferry ahead; summer sailings fill.</p>
+    </div>
+  </div>
+
+  <h3 style="margin-top:44px">The far ones</h3>
+  <div class="place">
+    <h3>Longyearbyen, Svalbard</h3>
+    <p class="coord">78°13′N · 125 nights, 20 Apr – 22 Aug <span>· solar midnight 00:59</span></p>
+    <p>The extreme case, and the easiest of all of these to actually pull off, because the window is four months wide and the flight is direct from Oslo or Tromsø. On the solstice the sun is still nearly twelve degrees up at midnight — high enough that it does not read as a sunset at all, just permanent afternoon. That is a different phenomenon from the horizon-grazing disc you get at 69°N, and worth knowing before you choose: <b>Svalbard gives you the most reliable daylight and the least dramatic midnight sun.</b> Polar bear regulations apply outside the settlement.</p>
+  </div>
+
+  <div class="place">
+    <h3>Ilulissat, Greenland</h3>
+    <p class="coord">69°13′N · 60 nights, 23 May – 21 Jul <span>· solar midnight 02:26</span></p>
+    <p>The Ilulissat Icefjord is a UNESCO site where the Sermeq Kujalleq glacier calves the icebergs that populate the North Atlantic, and midnight light on that ice is the best reason on this list to leave Europe. Direct flights now run to Ilulissat's expanded airport. Note the solar midnight: Greenland's western time zone is so far out of step with its longitude that the sun bottoms out at half past two in the morning.</p>
+  </div>
+
+  <div class="note">
+    <b>Not on this list</b>
+    <p>Murmansk, at 68°58′N, is astronomically an excellent midnight sun city and practically off the table for most Western travellers — Russian visa access, sanctions on flights and payments, and standing government travel advisories against travel to Russia. It is included in the almanac table for completeness only. Check your own government's current advisory before treating it as an option.</p>
+  </div>
+</section>
+
+<hr>
+
+<section>
+  <span class="sec-tag">Itineraries</span>
+  <h2>Four ways to hop it</h2>
+  <p>The northern routes are written as sequences, not fixed durations — stretch or compress each leg. All three assume you want the sun visible at or near midnight every night, which rules out some otherwise obvious connections.</p>
+
+  <div class="route">
+    <p class="rt">Route one · sea</p>
+    <h3>The Coastal Spine</h3>
+    <p class="meta">Bergen → Kirkenes · 6–7 days one way, 12 round trip · late May to late July</p>
+    <p>The Norwegian Coastal Express, running since 1893 and now operated jointly by Hurtigruten and Havila Voyages, calls at 34 ports between Bergen and Kirkenes. It is a working ferry that carries locals and cargo, not a cruise ship, which is exactly why it's the most authentic option — and it puts you on an open deck with an unobstructed horizon at midnight, every night, for a week.</p>
+    <ol class="legs">
+      <li><b>Bergen.</b> Board and sail north. Not yet in range — the first two nights are scenery, not sun.</li>
+      <li><b>Arctic Circle crossing</b> south of Bodø, marked with a ceremony. From here the sun stays up.</li>
+      <li><b>Bodø and Lofoten.</b> Stamsund, Svolvær, the Trollfjord. Sail this stretch <i>southbound</i> if Lofoten in daylight matters most to you — the timetable reverses which ports you see by day.</li>
+      <li><b>Tromsø,</b> a long evening call. Get off, walk, get back on.</li>
+      <li><b>Honningsvåg</b> with the North Cape excursion, then Hammerfest.</li>
+      <li><b>Finnmark coast overnight</b> — Kjøllefjord, Mehamn, Berlevåg, Båtsfjord. Above 70°N with nothing between the ship and the pole. This is the best midnight watch of the voyage.</li>
+      <li><b>Vardø, then Kirkenes.</b> Consider breaking the trip here and staying two nights in Vardø for the 23:57 solar midnight before flying out of Kirkenes.</li>
+    </ol>
+    <div class="note"><b>The catch</b><p>Port calls are 15 to 45 minutes at most stops and happen at whatever hour the schedule dictates. The ship is the experience; the towns are glimpses. If specific places matter, disembark and rejoin a later sailing.</p></div>
+  </div>
+
+  <div class="route">
+    <p class="rt">Route two · land</p>
+    <h3>The Nordkalotten Loop</h3>
+    <p class="meta">Three countries, rail and road · 10–16 days · early June to mid-July</p>
+    <p>The overland alternative, and the better one if you want Sámi cultural depth and clear inland skies rather than fjord drama. Uses the Ofoten Line, one of Europe's great train rides, then a car or the long-distance buses across the top of Finland.</p>
+    <ol class="legs">
+      <li><b>Fly to Narvik or Bodø.</b> Coastal Norway, first sun.</li>
+      <li><b>Ofoten Line to Abisko and Kiruna.</b> The ore railway over the mountains — do this in the evening for the light.</li>
+      <li><b>Abisko.</b> Chairlift to the Aurora Sky Station for a horizon with no terrain in it.</li>
+      <li><b>Kiruna to Finnish Lapland</b> by road, via Karesuando or Kilpisjärvi and the Three-Country Cairn.</li>
+      <li><b>Inari.</b> Siida museum and Sajos. Base here two nights; solar midnight is 01:14, so plan late.</li>
+      <li><b>Utsjoki</b> and the Teno river valley, then north across the border.</li>
+      <li><b>Nordkapp</b> via Karasjok and Lakselv. The 71°N plateau.</li>
+      <li><b>Alta and Tromsø</b> to fly home — or continue east to Vardø.</li>
+    </ol>
+    <div class="note"><b>Mosquitoes</b><p>Inland Lapland from late June through July is one of the worst mosquito environments in Europe. This is not a small footnote — it determines whether standing outside at 1am is pleasant or intolerable. Head net, DEET or icaridin, long sleeves. Early June is markedly better and still inside the window at these latitudes.</p></div>
+  </div>
+
+  <div class="route">
+    <p class="rt">Route three · air</p>
+    <h3>The Short Version</h3>
+    <p class="meta">Oslo → Longyearbyen → Tromsø · 5–7 days · mid-May to mid-August</p>
+    <p>If you have a week and fixed dates, this is the highest-probability trip on the list. Svalbard's four-month window means weather is the only variable, and you get the two contrasting versions of the phenomenon: the high, flat, all-day sun at 78°N and the horizon-grazing disc at 69°N.</p>
+    <ol class="legs">
+      <li><b>Oslo to Longyearbyen,</b> direct. Three nights: Isfjord boat trips, the abandoned Soviet settlement at Pyramiden, the Global Seed Vault exterior.</li>
+      <li><b>Longyearbyen to Tromsø.</b> Two nights: Fjellheisen, the Arctic Cathedral, and a midnight boat.</li>
+      <li><b>Optional extension to Vardø</b> via Kirkenes if the literal-midnight question is the point of the trip.</li>
+    </ol>
+  </div>
+
+  <div class="route">
+    <p class="rt">Route four · south</p>
+    <h3>Crossing the Circle</h3>
+    <p class="meta">Ushuaia or Punta Arenas → below 66°34′S · 12–18 days · December only</p>
+    <p>Detailed in the next section. In short: a December-departing Antarctic Circle expedition voyage, ideally one that pushes toward Marguerite Bay rather than just touching the line.</p>
+  </div>
+</section>
+
+<hr>
+
+<section>
+  <span class="sec-tag">The Southern Hemisphere</span>
+  <h2>The ice wants late. The sun wants early.</h2>
+  <p>This is the planning problem that makes the southern midnight sun hard, and almost nobody states it plainly.</p>
+  <p>The midnight sun window in Antarctica is narrow and it closes fast as you move north toward the Circle. At the Circle itself you have about seventeen days. Meanwhile the pack ice that seals the approaches only breaks up reliably from late December onward — which is why most Circle-crossing voyages are scheduled in January and February, when the ice is friendliest.</p>
+  <p>By January, at 66°33′S, the sun sets again. The two windows barely overlap.</p>
+
+  <figure><figcaption><b>Fig. 2</b> — The southern squeeze. The sun window closes as you move north toward the Circle; the ice window opens late. Only the shaded band works.</figcaption><svg viewBox="0 0 720 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Chart comparing the Antarctic midnight sun window with the pack ice access window">
+<style>.lb{font:500 12px "IBM Plex Mono",monospace;fill:var(--slate)}.ln{font:500 12.5px "IBM Plex Mono",monospace;fill:var(--ink)}.ax{font:500 11px "IBM Plex Mono",monospace;fill:var(--slate)}.sl{font:600 11px "IBM Plex Mono",monospace;fill:var(--sun-d)}.ic{font:600 11px "IBM Plex Mono",monospace;fill:var(--deep)}</style>
+<line x1="176.0" y1="40" x2="176.0" y2="196" stroke="var(--rule)" stroke-width="1"/><text class="ax" x="181.0" y="34">1 DEC</text>
+<line x1="324.3" y1="40" x2="324.3" y2="196" stroke="var(--rule)" stroke-width="1"/><text class="ax" x="329.3" y="34">15 DEC</text>
+<line x1="482.4" y1="40" x2="482.4" y2="196" stroke="var(--rule)" stroke-width="1"/><text class="ax" x="487.4" y="34">1 JAN</text>
+<line x1="620.8" y1="40" x2="620.8" y2="196" stroke="var(--rule)" stroke-width="1"/><text class="ax" x="625.8" y="34">15 JAN</text>
+<rect x="344.0" y="46" width="217.5" height="150" fill="var(--sun)" opacity="0.10"/>
+<text class="sl" x="452.8" y="60" text-anchor="middle">THE OVERLAP</text>
+<line x1="373.7" y1="40" x2="373.7" y2="196" stroke="var(--sun)" stroke-width="1.5" stroke-dasharray="3 3"/>
+<text class="sl" x="369.7" y="34" text-anchor="end">SOLSTICE</text>
+<text class="ln" x="8" y="80">Marguerite Bay</text><text class="lb" x="166" y="80" text-anchor="end">67°34′S</text>
+<rect x="205.7" y="69" width="355.8" height="14" rx="2" fill="var(--sun)" opacity="0.88"/>
+<text class="ln" x="8" y="110">Detaille Island</text><text class="lb" x="166" y="110" text-anchor="end">66°52′S</text>
+<rect x="265.0" y="99" width="227.3" height="14" rx="2" fill="var(--sun)" opacity="0.88"/>
+<text class="ln" x="8" y="140">Antarctic Circle</text><text class="lb" x="166" y="140" text-anchor="end">66°33′S</text>
+<rect x="304.5" y="129" width="158.2" height="14" rx="2" fill="var(--sun)" opacity="0.88"/>
+<text class="ln" x="8" y="176">Pack ice opens</text><text class="lb" x="166" y="176" text-anchor="end">ships</text>
+<rect x="344.0" y="165" width="346.0" height="14" rx="2" fill="var(--deep)" opacity="0.75"/>
+<text class="ic" x="682.0" y="176" text-anchor="end" fill="var(--paper)">→ into March</text>
+<text class="ax" x="8" y="228">Sun windows computed for 2027. Ice access is an indicative seasonal norm, not a schedule — it moves year to year.</text>
+</svg></figure>
+
+  <p>The consequence is specific and actionable: <b>book a December departure, and prioritise voyages that push furthest south.</b> A ship that only just crosses the line on 5 January gives you a Circle certificate and a sunset. A ship at 67°30′S in Marguerite Bay on the same date is still in continuous daylight, because latitude widens the window in the south exactly as it does in the north.</p>
+  <p>The itineraries that reach this far are marketed variously as Antarctic Circle, Polar Circle or Crossing the Circle voyages, from Ushuaia across the Drake Passage, or as fly-cruises from Punta Arenas or Puerto Natales to King George Island that trade two days of Drake crossing for two more days of pushing south. The southernmost landing points on commercial itineraries are around Detaille Island and Stonington Island in Marguerite Bay.</p>
+
+  <div class="note">
+    <b>No operator can promise the crossing</b>
+    <p>Every voyage that advertises the Antarctic Circle qualifies it: reaching 66°34′S depends entirely on ice and weather in the days beforehand. Treat the crossing as a strong possibility, not a booking guarantee, and read the operator's own language carefully — the honest ones say so on the itinerary page.</p>
+    <p>Ship's time on the Peninsula is usually set to Chilean or Argentine time, which puts solar midnight near 01:25. Ask what time zone the ship keeps if you're planning a specific vigil.</p>
+  </div>
+
+  <h4>What does not work</h4>
+  <ul class="plain">
+    <li><b>Ushuaia, Argentina</b> — 54°48′S. Sun reaches roughly 11.5° below the horizon at solar midnight on the solstice. Long twilight, real darkness. Not midnight sun.</li>
+    <li><b>Punta Arenas, Puerto Williams, Puerto Natales</b> — all further from the pole than Ushuaia or comparable. Same answer.</li>
+    <li><b>The Falklands, South Georgia</b> — 51°S and 54°S respectively. No.</li>
+    <li><b>New Zealand's Stewart Island and the subantarctic islands</b> — 47°S to 52°S. No.</li>
+    <li><b>Tasmania, Patagonia generally, southern Chile's fjords</b> — all far too equatorial for the effect, however far south they feel.</li>
+  </ul>
+</section>
+
+<hr>
+
+<section>
+  <span class="sec-tag">Practicalities</span>
+  <h2>What actually goes wrong</h2>
+
+  <h4>Cloud, not darkness</h4>
+  <p>The failure mode on these trips is almost never being in the wrong place — the almanac is deterministic. It is overcast. Coastal Norway is the most reliably cloudy corridor on the list; inland Swedish and Finnish Lapland and Svalbard are statistically clearer. If you have limited days, weight your itinerary toward a location with a long window, so a bad week doesn't cost you the trip. This is the practical argument for Tromsø, Nordkapp or Svalbard over Grímsey or Rovaniemi.</p>
+
+  <h4>Sleep</h4>
+  <p>The problem is not comfort, it is circadian. Continuous light suppresses melatonin and most people's sleep degrades noticeably by day three. Bring a proper contoured eye mask rather than relying on hotel blackout curtains, which in older Nordic buildings are often inadequate. Keep a fixed bedtime even when the light says otherwise, and get bright light deliberately in your subjective morning to anchor the rhythm.</p>
+
+  <h4>Booking windows</h4>
+  <p>Solstice week in Lofoten, Tromsø and Nordkapp is the peak of Norwegian domestic tourism as well as international. Six to nine months ahead for accommodation in solstice week is normal, longer for Lofoten rorbuer. Coastal Express cabins in June book similarly far out. The Grímsey ferry and the Norlandair flights are small-capacity and fill in summer. Antarctic December departures are typically booked twelve to eighteen months ahead.</p>
+
+  <h4>Photography</h4>
+  <p>At solar midnight the sun sits between 1° and 5° above the horizon at most of these latitudes — an extremely low, warm, raking light that persists for hours rather than the twenty minutes you get at temperate latitudes. You do not need long exposures. A graduated neutral density filter earns its place, because the dynamic range between the disc and the foreground is severe. Bring more battery than you think: cold plus continuous shooting drains fast.</p>
+
+  <h4>What to actually pack for</h4>
+  <ul class="plain">
+    <li>Summer Arctic temperatures near the coast sit around 8–15°C and drop hard at solar midnight with wind off the water. Layers, windproof shell, hat.</li>
+    <li>Inland Lapland can hit 25°C in July and still be cold at 1am.</li>
+    <li>Mosquito protection for anywhere inland from late June.</li>
+    <li>Svalbard has firearm and guide requirements outside settlement limits — do not plan on wandering.</li>
+  </ul>
+</section>
+
+<div class="colophon">
+  <b>Method and caveats</b>
+  <p>Sun windows and solar midnight times were computed for 2027 using the PyEphem solar ephemeris, at sea level, with standard atmospheric refraction of 34 arcminutes and the sun's upper limb (semi-diameter ≈ 16′) as the criterion — the conventional definition of sunrise and sunset. Local clock times use each location's IANA time zone with summer time applied.</p>
+  <p>Three caveats matter. Elevation extends the window: on the Nordkapp plateau at 307m the horizon dips roughly half a degree, adding days at each end beyond the figures given. Terrain does the opposite — a mountain to the north will hide a sun that is astronomically up, which is a real risk in Lofoten and the Norwegian fjords. And refraction varies with temperature and pressure, so the first and last days of any window are approximate to within a day.</p>
+  <p>Ferry, rail and voyage details reflect published operator information and seasonal norms; schedules change annually and should be confirmed directly before booking. The Antarctic ice-access band is an indicative seasonal pattern, not a timetable.</p>
+</div>
+
+</div>
+</body>
+</html>
